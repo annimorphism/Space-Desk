@@ -8,11 +8,15 @@ let url = "https://api.nasa.gov/planetary/apod";
 let hit_url = url + `?api_key=${key}`;
 
 async function fetcher() {
-  let response = await fetch(hit_url);
-  let data = await response.json();
-  let img = data.hdurl;
-  execSync(`curl -o ./Img/background.jpg ${img}`);
-  setBackground();
+  try {
+    let response = await fetch(hit_url);
+    let data = await response.json();
+    let img = data.hdurl ? data.hdurl : data.url;
+    execSync(`curl -o ./Img/background.jpg ${img}`);
+    setBackground();
+  } catch (e) {
+    console.log("There was some error -> ", e);
+  }
 }
 async function setBackground() {
   let path = "./Img/background.jpg";
