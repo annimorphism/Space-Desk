@@ -15,8 +15,8 @@ async function fetcher() {
     let img = data.url ? data.url : "";
     let imgext = ".jpg";
     path = `./Img/background${imgext}`;
-    console.log(imgHd);
-    console.log(img);
+    if (imgHd !== "") console.log(`HD Image URL is --> ${imgHd}`);
+    console.log(`Normal Image URL is --> ${img}`);
     if (imgHd.includes("jpg")) {
       execSync(`curl -o ${path} ${imgHd}`);
       setBackground(path);
