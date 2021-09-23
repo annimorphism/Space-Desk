@@ -33,7 +33,7 @@ async function fetcher() {
 async function setBackground(path) {
   let file = path;
   console.log(file);
-  await wallpaper.set(file, (scale = "center"));
+  await wallpaper.set(file, (scale = "center")) ;
   await wallpaper.get();
 }
 fetcher();
