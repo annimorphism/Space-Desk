@@ -26,11 +26,11 @@ async function fetcher() {
 		if (imgHd.includes("jpg")) {
 			execSync(`curl -o ${path} ${imgHd}`);
 			setBackground(path);
-			console.log("HD url");
+			console.log("HD Image - Set as Background");
 		} else if (img.includes("jpg")) {
 			execSync(`curl -o ${path} ${img}`);
 			setBackground(path);
-			console.log("Normal url");
+			console.log("Standard Image - Set as Background");
 		}
 	} catch (e) {
 		console.log("There was some error -> ", e);
@@ -38,7 +38,6 @@ async function fetcher() {
 }
 async function setBackground(path) {
 	let file = path;
-	console.log(file);
 	await wallpaper.set(file, (scale = "center"));
 	await wallpaper.get();
 }
