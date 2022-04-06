@@ -15,9 +15,12 @@ async function fetcher() {
 		let img = data.url ? data.url : "";
 		let imgext = ".jpg";
 
-		let title = imgHd.split("/");
-		let path = `./Img/${title[title.length - 1]}`;
-
+		if (imgHd !== "") {
+			let title = imgHd.split("/");
+			path = `./Img/${title[title.length - 1]}`;
+		} else {
+			path = `./Img/background${imgext}`;
+		}
 		if (imgHd !== "") console.log(`HD Image URL is --> ${imgHd}`);
 		console.log(`Normal Image URL is --> ${img}`);
 		if (imgHd.includes("jpg")) {
